@@ -7,6 +7,7 @@ then
     npm ci
 elif [ -f pnpm-lock.yaml ]
 then
+    yarn config set registry https://registry.npm.taobao.org/
     yarn global add pnpm && pnpm i --frozen-lockfile
 else
     echo "Lockfile not found." && exit 1
