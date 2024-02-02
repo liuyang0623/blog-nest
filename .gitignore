@@ -9,7 +9,7 @@ test-results
 .pnpm-store
 tsconfig.tsbuildinfo
 
-.env.prod
+# .env.prod
 *.local
 *.cache
 *error.log
