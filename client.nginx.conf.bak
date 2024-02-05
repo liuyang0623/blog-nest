@@ -1,10 +1,10 @@
 
-upstream wipi_client {
+upstream feblog_client {
   server 127.0.0.1:3001;
   keepalive 64;
 }
 
-upstream wipi_admin {
+upstream feblog_admin {
   server 127.0.0.1:3002;
   keepalive 64;
 }
@@ -31,7 +31,7 @@ server {
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header X-Nginx-Proxy true;
     proxy_cache_bypass $http_upgrade;
-    proxy_pass http://wipi_client;
+    proxy_pass http://feblog_client;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   }
@@ -59,7 +59,7 @@ server {
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header X-Nginx-Proxy true;
     proxy_cache_bypass $http_upgrade;
-    proxy_pass http://wipi_admin;
+    proxy_pass http://feblog_admin;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   }

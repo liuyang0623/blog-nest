@@ -31,7 +31,7 @@ Rss.getInitialProps = async (ctx) => {
       description: setting.seoDesc,
       feed_url: url.resolve(setting.systemUrl, 'rss'),
       site_url: setting.systemUrl,
-      author: 'https://github.com/fantasticit',
+      author: 'https://github.com/liuyang',
       categories: categories.map((c) => c.label),
     },
     null

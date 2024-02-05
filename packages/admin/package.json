@@ -1,19 +1,19 @@
 {
-  "name": "@wipi/admin",
+  "name": "@feblog/admin",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "next build",
     "dev": "node dev-server.js",
     "start": "cross-env NODE_ENV=production node prod-server.js",
-    "pm2": "pm2 start npm --name @wipi/admin -- start",
+    "pm2": "pm2 start npm --name @feblog/admin -- start",
     "lint": "next lint"
   },
   "dependencies": {
     "@ant-design/compatible": "^1.1.0",
     "@ant-design/icons": "^4.7.0",
     "@monaco-editor/react": "^4.4.4",
-    "@wipi/config": "workspace:^1.0.0",
+    "@feblog/config": "workspace:^1.0.0",
     "antd": "^4.19.3",
     "array-move": "^3.0.1",
     "axios": "^0.19.2",

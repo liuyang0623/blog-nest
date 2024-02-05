@@ -1,8 +1,8 @@
-# Wipi
+# feblog
 
 ## 简介
 
-Wipi 是一个面向个人的开源的集成文章发表、页面创建、知识小册等功能的 CMS 系统。涉及到的技术如下：
+feblog 是一个面向个人的开源的集成文章发表、页面创建、知识小册等功能的 CMS 系统。涉及到的技术如下：
 
 - `MySQL`：数据存储
 - `next.js`：前端页面框架
@@ -11,7 +11,7 @@ Wipi 是一个面向个人的开源的集成文章发表、页面创建、知识
 
 ## 链接
 
-- [Github 源码](https://github.com/fantasticit/wipi)
+- [Github 源码](https://github.com/liuyang/feblog)
 - [前台页面](https://blog.codingit.cn/)
 - [管理系统](https://admin.blog.codingit.cn/)：支持访客注册
 
@@ -31,13 +31,13 @@ Wipi 是一个面向个人的开源的集成文章发表、页面创建、知识
 ## 预览
 
 <ul>
-  <li><img width="240" alt="文章列表" src="https://wipi.oss-cn-shanghai.aliyuncs.com/2021-06-13/3402/image.png"/></li>
-  <li><img width="240" alt="文章详情" src="https://wipi.oss-cn-shanghai.aliyuncs.com/2021-06-12/815/image.png"/></li>
-  <li><img width="240" alt="动态页面" src="https://wipi.oss-cn-shanghai.aliyuncs.com/2021-06-12/3124/image.png"/></li>
-  <li><img width="240" alt="知识小册" src="https://wipi.oss-cn-shanghai.aliyuncs.com/2021-06-12/6485/image.png"/></li>
-  <li><img width="240" alt="后台管理" src="https://wipi.oss-cn-shanghai.aliyuncs.com/2021-06-12/754/image.png"/></li>
-  <li><img width="240" alt="文章编辑" src="https://wipi.oss-cn-shanghai.aliyuncs.com/2021-06-12/6587/image.png"/></li>
-  <li><img width="240" alt="小册编辑" src="https://wipi.oss-cn-shanghai.aliyuncs.com/2021-06-12/1864/image.png"/></li>
+  <li><img width="240" alt="文章列表" src="https://feblog.oss-cn-shanghai.aliyuncs.com/2021-06-13/3402/image.png"/></li>
+  <li><img width="240" alt="文章详情" src="https://feblog.oss-cn-shanghai.aliyuncs.com/2021-06-12/815/image.png"/></li>
+  <li><img width="240" alt="动态页面" src="https://feblog.oss-cn-shanghai.aliyuncs.com/2021-06-12/3124/image.png"/></li>
+  <li><img width="240" alt="知识小册" src="https://feblog.oss-cn-shanghai.aliyuncs.com/2021-06-12/6485/image.png"/></li>
+  <li><img width="240" alt="后台管理" src="https://feblog.oss-cn-shanghai.aliyuncs.com/2021-06-12/754/image.png"/></li>
+  <li><img width="240" alt="文章编辑" src="https://feblog.oss-cn-shanghai.aliyuncs.com/2021-06-12/6587/image.png"/></li>
+  <li><img width="240" alt="小册编辑" src="https://feblog.oss-cn-shanghai.aliyuncs.com/2021-06-12/1864/image.png"/></li>
 </ul>
 
 ## 项目运行
@@ -48,15 +48,15 @@ Wipi 是一个面向个人的开源的集成文章发表、页面创建、知识
 
 ```bash
 docker image pull mysql:5.7
-docker run -d --restart=always --name wipi -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:5.7
+docker run -d --restart=always --name feblog -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:5.7
 ```
 
 然后在 `MySQL` 中创建数据库。
 
 ```bash
-docker container exec -it wipi bash;
+docker container exec -it feblog bash;
 mysql -u root -p;
-CREATE DATABASE  `wipi` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE  `feblog` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 ### 本地运行
@@ -64,7 +64,7 @@ CREATE DATABASE  `wipi` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 首先，clone 项目。
 
 ```bash
-git clone --depth=1 https://github.com/fantasticit/wipi.git your-project-name
+git clone --depth=1 https://github.com/liuyang/feblog.git your-project-name
 ```
 
 然后，安装项目依赖。
@@ -92,8 +92,8 @@ pnpm run dev
 ### 系统设置
 
 <ul>
-  <li><img width="240" alt="系统设置" src="https://wipi.oss-cn-shanghai.aliyuncs.com/2021-06-13/FURY8457EB0K41T6ABMBCSP1N9HUUFAB/image.png"/></li>
-  <li><img width="240" alt="前台页面" src="https://wipi.oss-cn-shanghai.aliyuncs.com/2021-06-13/ICS41W05E4XRKLEAF9YO99A48CWGRP9X/image.png"/></li>
+  <li><img width="240" alt="系统设置" src="https://feblog.oss-cn-shanghai.aliyuncs.com/2021-06-13/FURY8457EB0K41T6ABMBCSP1N9HUUFAB/image.png"/></li>
+  <li><img width="240" alt="前台页面" src="https://feblog.oss-cn-shanghai.aliyuncs.com/2021-06-13/ICS41W05E4XRKLEAF9YO99A48CWGRP9X/image.png"/></li>
 </ul>
 
 项目初次启动时，需要在后台进行系统设置。随着内容的丰富，页面内容也会丰富起来。
@@ -130,7 +130,7 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_USER=root
 DB_PASSWD=root
-DB_DATABASE=wipi
+DB_DATABASE=feblog
 
 # Github 第三方登录配置
 # 关于 Github OAuth 可参考 https://www.ruanyifeng.com/blog/2019/04/github-oauth.html
@@ -164,7 +164,7 @@ pm2 save
 采用反向代理进行 `nginx` 配置，**同时设置 `proxy_set_header X-Real-IP $remote_addr;` 以便服务端获取到真实 ip 地址**。
 
 ```bash
-upstream wipi_client {
+upstream feblog_client {
   server 127.0.0.1:3000;
   keepalive 64;
 }
@@ -189,7 +189,7 @@ server {
     proxy_set_header Host $host;
     proxy_set_header X-Nginx-Proxy true;
     proxy_cache_bypass $http_upgrade;
-    proxy_pass http://wipi_client; #反向代理
+    proxy_pass http://feblog_client; #反向代理
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   }

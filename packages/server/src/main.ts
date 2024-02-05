@@ -27,15 +27,15 @@ async function bootstrap() {
   app.use(bodyParser.json({ limit: '10mb' })); // 修改请求的容量
   app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('Wipi Open Api')
-    .setDescription('Wipi Open Api Document')
+    .setTitle('feblog Open Api')
+    .setDescription('feblog Open Api Document')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, document);
 
   await app.listen(app.get('ConfigService').get('SERVER_PORT', 3003));
-  console.log('[wipi] 服务启动成功');
+  console.log('[feblog] 服务启动成功');
 }
 
 bootstrap();

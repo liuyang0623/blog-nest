@@ -11,7 +11,7 @@ import { JwtStrategy } from './jwt.strategy';
 
 const passModule = PassportModule.register({ defaultStrategy: 'jwt' });
 const jwtModule = JwtModule.register({
-  secret: 'wipi',
+  secret: 'feblog',
   signOptions: { expiresIn: '4h' },
 });
 

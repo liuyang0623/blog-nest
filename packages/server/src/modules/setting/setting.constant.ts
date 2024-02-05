@@ -1,4 +1,4 @@
-import { messages } from '@wipi/config';
+import { messages } from '@feblog/config';
 
 export const i18n = messages;
 

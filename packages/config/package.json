@@ -1,5 +1,5 @@
 {
-  "name": "@wipi/config",
+  "name": "@feblog/config",
   "version": "1.0.0",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",

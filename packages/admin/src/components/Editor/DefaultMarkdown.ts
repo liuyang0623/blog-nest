@@ -1,5 +1,5 @@
 export const DEFAULT_MARKDOWN = `
-# 欢迎使用 Wipi Markdown 编辑器
+# 欢迎使用 feblog Markdown 编辑器
 
 > * 整理知识，学习笔记
 > * 发布日记，杂文，所见所想

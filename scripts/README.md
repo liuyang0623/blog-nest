@@ -9,7 +9,7 @@
 ```shell
 #! /bin/bash
 
-cd /apps/wipi
+cd /apps/feblog
 git checkout main
 git pull
 
@@ -28,16 +28,16 @@ pm2 save
 ```shell
 #! /bin/bash
 
-cd /apps/wipi
+cd /apps/feblog
 git checkout refactor/pnpm
 git pull
 
 pnpm install
 pnpm run build
 
-pm2 reload @wipi/server
-pm2 reload @wipi/client
-pm2 reload @wipi/admin
+pm2 reload @feblog/server
+pm2 reload @feblog/client
+pm2 reload @feblog/admin
 ```
 
 ## 自动化部署
@@ -64,9 +64,9 @@ hooks 配置示例：
 ```json
 [
   {
-    "id": "wipi-auto-update",
-    "execute-command": "/apps/wipi/scripts/update.sh", // 注意根据项目修改脚本路径
-    "command-working-directory": "/apps/wipi/",
+    "id": "feblog-auto-update",
+    "execute-command": "/apps/feblog/scripts/update.sh", // 注意根据项目修改脚本路径
+    "command-working-directory": "/apps/feblog/",
     "http-methods": ["POST"],
     "pass-arguments-to-command": [
       {
@@ -114,6 +114,6 @@ hooks 配置示例：
 
 本质上，webhook 就是在服务器启动一个服务，然后通过 HTTP 调用相应的 URL 触发执行指定的脚本。
 
-> 例如 wipi 项目的 webhook：http://124.221.147.83:9000/hooks/wipi-auto-update
+> 例如 feblog 项目的 webhook：http://124.221.147.83:9000/hooks/feblog-auto-update
 
 以 Github 为例，在设置中找到 webhooks 配置指定 URL，注意 `Content type` 为 `application/json`。

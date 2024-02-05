@@ -1,4 +1,4 @@
-upstream wipi_server {
+upstream feblog_server {
   server 127.0.0.1:3003;
   keepalive 64;
 }
@@ -19,8 +19,8 @@ server {
 
   client_max_body_size 100m;
 
-  location /wipi {
-    proxy_pass http://wipi_server;
+  location /feblog {
+    proxy_pass http://feblog_server;
     proxy_read_timeout 300s;
     proxy_send_timeout 300s;
 

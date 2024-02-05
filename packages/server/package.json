@@ -1,8 +1,8 @@
 {
-  "name": "@wipi/server",
+  "name": "@feblog/server",
   "version": "1.0.0",
   "description": "",
-  "author": "fantasticit <fantasticit@163.com>",
+  "author": "liuyang <liuyang@163.com>",
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
@@ -11,7 +11,7 @@
     "dev": "nest start --watch",
     "debug": "nest start --debug --watch",
     "start": "cross-env NODE_ENV=production node dist/main",
-    "pm2": "pm2 start npm --name @wipi/server -- start",
+    "pm2": "pm2 start npm --name @feblog/server -- start",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -28,7 +28,7 @@
     "@nestjs/platform-express": "^6.11.5",
     "@nestjs/swagger": "^4.7.15",
     "@nestjs/typeorm": "^6.2.0",
-    "@wipi/config": "workspace:^1.0.0",
+    "@feblog/config": "workspace:^1.0.0",
     "ali-oss": "^6.5.1",
     "axios": "^0.23.0",
     "bcryptjs": "^2.4.3",
