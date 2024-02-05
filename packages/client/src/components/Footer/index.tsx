@@ -42,7 +42,7 @@ export const Footer = ({ setting, className = '', hasBg = false }) => {
           <a
             aria-label="Github"
             className={style.github}
-            href="https://github.com/liuyang/feblog"
+            href="https://github.com/liuyang0623"
             target="_blank"
             rel="noopener noreferrer"
           >

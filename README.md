@@ -11,7 +11,7 @@ feblog 是一个面向个人的开源的集成文章发表、页面创建、知�
 
 ## 链接
 
-- [Github 源码](https://github.com/liuyang/feblog)
+- [Github 源码](https://github.com/liuyang0623/blog-nest)
 - [前台页面](https://blog.codingit.cn/)
 - [管理系统](https://admin.blog.codingit.cn/)：支持访客注册
 
@@ -64,7 +64,7 @@ CREATE DATABASE  `feblog` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_
 首先，clone 项目。
 
 ```bash
-git clone --depth=1 https://github.com/liuyang/feblog.git your-project-name
+git clone --depth=1 https://github.com/liuyang0623/blog-nest.git your-project-name
 ```
 
 然后，安装项目依赖。
