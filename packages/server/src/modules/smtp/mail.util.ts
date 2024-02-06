@@ -10,11 +10,14 @@ export const sendEmail = (message, { host, port, user, pass }) => {
   const transport = nodemailer.createTransport({
     host,
     port,
-    secureConnection: true,
-    secure: true,
+    secureConnection: false,
+    // secure: true,
     auth: {
       user,
       pass,
+    },
+    tls: {
+      ciphers: 'SSLv3',
     },
   });
 
