@@ -84,7 +84,7 @@ export class AuthService {
 
       if (result.data.email) {
         const user = {
-          name: result.data.name,
+          name: result.data.login,
           avatar: result.data.avatar_url,
           email: result.data.email,
           type: 'github',
