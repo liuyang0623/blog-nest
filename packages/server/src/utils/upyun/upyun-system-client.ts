@@ -11,17 +11,19 @@ export class UpyunSysClient extends UpyunClient {
   }
 
   async putFile(fileData: any) {
+    const fileHash = new Date().getTime();
     const uploadData = new FormData();
     const { bucketname, operator, password, apiPrefix, upyunCdn } = this.config;
-    const { path, file } = fileData;
-    uploadData.append('file', file.buffer, file.originalname);
-
     const apiUrl = `${apiPrefix}/${bucketname}`;
+    const { path, file } = fileData;
+    const fileSuffix = file.originalname.split('.').pop();
+    const filePrefix = file.originalname.replace(`.${fileSuffix}`, '');
+    uploadData.append('file', file.buffer, file.originalname);
 
     /* 计算policy */
     const policyObj = {
       'bucket': bucketname,
-      'save-key': `/{filename}-${new Date().getTime()}{.suffix}`,
+      'save-key': `${!!path ? path : ''}/{filename}-${fileHash}{.suffix}`,
       'expiration': new Date().getTime() + 3600 /* 过期时间，在当前时间+10分钟 */,
     };
     const policy = btoa(JSON.stringify(policyObj));
@@ -36,13 +38,13 @@ export class UpyunSysClient extends UpyunClient {
     let resultUrl = '';
     try {
       const res: any = await axios({ method: 'POST', url: apiUrl, data: uploadData });
-      if (res.code === 200) {
-        resultUrl = `${upyunCdn}${res.url}`;
+      if (res.data.code === 200) {
+        resultUrl = `${upyunCdn}${res.data.url}`;
       }
     } catch (error) {
       throw new HttpException(error.response.data.msg, HttpStatus.BAD_REQUEST);
     }
-    return resultUrl;
+    return { url: resultUrl, filename: `${filePrefix}-${fileHash}.${fileSuffix}` };
   }
 
   // async deleteFile(url: string) {

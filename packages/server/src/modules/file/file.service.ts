@@ -92,19 +92,17 @@ export class FileService {
    * 上传文件（又拍云）
    * @param file
    */
-  async uploadFileUpyun(file) {
+  async uploadFileUpyun(file, path?) {
     const { originalname, mimetype, size, buffer } = file;
-    const url = await this.upyun.putFile({ file })
-    console.log(url)
-    // const url = await this.oss.putFile(filename, buffer);
-    // const newFile = await this.fileRepository.create({
-    //   originalname,
-    //   filename,
-    //   url,
-    //   type: mimetype,
-    //   size,
-    // });
-    // await this.fileRepository.save(newFile);
-    // return newFile;
+    const { url, filename } = await this.upyun.putFile({ file, path });
+    const newFile = await this.fileRepository.create({
+      originalname,
+      filename: filename,
+      url,
+      type: mimetype,
+      size,
+    });
+    await this.fileRepository.save(newFile);
+    return newFile;
   }
 }

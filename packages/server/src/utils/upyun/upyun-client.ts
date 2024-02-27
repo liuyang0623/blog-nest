@@ -9,7 +9,6 @@ export abstract class UpyunClient {
     };
   }
 
-  // abstract putFile(fileData: FormData): Promise<string>;
-  abstract putFile(fileData: FormData);
+  abstract putFile(fileData: any): Promise<{url: string, filename: string}>;
   // abstract deleteFile(url: string): Promise<void>;
 }
