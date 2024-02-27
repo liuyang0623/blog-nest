@@ -61,6 +61,10 @@ export class Setting {
 
   @ApiProperty()
   @Column({ type: 'text', default: null })
+  upyun: string; // 又拍云 上传配置
+
+  @ApiProperty()
+  @Column({ type: 'text', default: null })
   smtpHost: string; // SMTP 地址
 
   @ApiProperty()

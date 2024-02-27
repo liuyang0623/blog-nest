@@ -20,6 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@feblog/config": "workspace:^1.0.0",
     "@nestjs/common": "^6.7.2",
     "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^6.7.2",
@@ -28,7 +29,6 @@
     "@nestjs/platform-express": "^6.11.5",
     "@nestjs/swagger": "^4.7.15",
     "@nestjs/typeorm": "^6.2.0",
-    "@feblog/config": "workspace:^1.0.0",
     "ali-oss": "^6.5.1",
     "axios": "^0.23.0",
     "bcryptjs": "^2.4.3",
@@ -40,6 +40,7 @@
     "deepmerge": "^4.2.2",
     "dotenv": "^8.2.0",
     "express-rate-limit": "^5.0.0",
+    "form-data": "^4.0.0",
     "fs-extra": "^10.0.0",
     "helmet": "^3.21.2",
     "highlight.js": "^9.18.0",

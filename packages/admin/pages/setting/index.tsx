@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { AnalyticsSetting } from '@/components/Setting/AnalyticsSetting';
 import { LocaleSetting } from '@/components/Setting/LocaleSetting';
 import { OSSSetting } from '@/components/Setting/OSSSetting';
+import { UPYUNSetting } from '@/components/Setting/UPYUNSetting';
 import { SEOSetting } from '@/components/Setting/SEOSetting';
 import { SMTPSetting } from '@/components/Setting/SMTPSetting';
 import { SystemSetting } from '@/components/Setting/SystemSetting';
@@ -43,6 +44,10 @@ const Setting: NextPage<IProps> = ({ type: defaultType }) => {
     {
       label: 'OSS设置',
       content: <OSSSetting setting={setting} />,
+    },
+    {
+      label: '又拍云设置',
+      content: <UPYUNSetting setting={setting} />,
     },
     {
       label: 'SMTP服务',
