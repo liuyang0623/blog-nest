@@ -129,7 +129,6 @@ export const Editor: React.FC<IProps> = ({ defaultValue = DEFAULT_MARKDOWN, onCh
         <div>
           {mounted &&
             toolbar.map((tool) => {
-              console.log(editorRef.current.editor)
               return (
                 <span key={tool.label} className={style.toolWrap}>
                   <Tooltip title={tool.label}>
