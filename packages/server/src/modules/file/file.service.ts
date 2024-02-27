@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 
 import { dateFormat } from '../../utils/date.util';
 import { Oss } from '../../utils/oss.util';
+import { Upyun } from '../../utils/upyun.util';
 import { uniqueid } from '../../utils/uniqueid.util';
 import { SettingService } from '../setting/setting.service';
 import { File } from './file.entity';
@@ -11,6 +12,7 @@ import { File } from './file.entity';
 @Injectable()
 export class FileService {
   private oss: Oss;
+  private upyun: Upyun;
 
   constructor(
     @InjectRepository(File)
@@ -18,6 +20,7 @@ export class FileService {
     private readonly settingService: SettingService
   ) {
     this.oss = new Oss(this.settingService);
+    this.upyun = new Upyun(this.settingService);
   }
 
   /**
@@ -83,5 +86,25 @@ export class FileService {
     const target = await this.fileRepository.findOne(id);
     await this.oss.deleteFile(target.filename);
     return this.fileRepository.remove(target);
+  }
+
+  /**
+   * 上传文件（又拍云）
+   * @param file
+   */
+  async uploadFileUpyun(file) {
+    const { originalname, mimetype, size, buffer } = file;
+    const url = await this.upyun.putFile({ file })
+    console.log(url)
+    // const url = await this.oss.putFile(filename, buffer);
+    // const newFile = await this.fileRepository.create({
+    //   originalname,
+    //   filename,
+    //   url,
+    //   type: mimetype,
+    //   size,
+    // });
+    // await this.fileRepository.save(newFile);
+    // return newFile;
   }
 }

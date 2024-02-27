@@ -9,7 +9,12 @@ export class FileProvider {
     const formData = new FormData();
     formData.append('file', file);
 
-    return httpProvider.post('/file/upload?unique=' + unique, formData, {
+    // return httpProvider.post('/file/upload?unique=' + unique, formData, {
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data',
+    //   },
+    // });
+    return httpProvider.post('/file/upload2?unique=' + unique, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { HttpException, HttpStatus } from '@nestjs/common';
 import { UpyunClient } from './upyun-client';
 const FormData = require('form-data');
-const { HexMD5, b64hamcsha1 } = require('../../lib/hash');
+import { HexMD5, b64hamcsha1 } from './hash';
 
 export class UpyunSysClient extends UpyunClient {
   // eslint-disable-next-line class-methods-use-this
@@ -21,7 +21,7 @@ export class UpyunSysClient extends UpyunClient {
     /* 计算policy */
     const policyObj = {
       'bucket': bucketname,
-      'save-key': `${path}/{filename}{.suffix}`,
+      'save-key': `/{filename}-${new Date().getTime()}{.suffix}`,
       'expiration': new Date().getTime() + 3600 /* 过期时间，在当前时间+10分钟 */,
     };
     const policy = btoa(JSON.stringify(policyObj));
@@ -33,15 +33,16 @@ export class UpyunSysClient extends UpyunClient {
     const arr = ['POST', `/${bucketname}`, policy];
     const authorization = `UPYUN ${operator}:${b64hamcsha1(passwordMd5, arr.join('&'))}`;
     uploadData.append('authorization', authorization);
+    let resultUrl = '';
     try {
       const res: any = await axios({ method: 'POST', url: apiUrl, data: uploadData });
       if (res.code === 200) {
-        return `${upyunCdn}${res.url}`;
+        resultUrl = `${upyunCdn}${res.url}`;
       }
     } catch (error) {
-      throw new HttpException('OSS 配置不完善，无法进行操作', HttpStatus.BAD_REQUEST);
+      throw new HttpException(error.response.data.msg, HttpStatus.BAD_REQUEST);
     }
-    return '';
+    return resultUrl;
   }
 
   // async deleteFile(url: string) {

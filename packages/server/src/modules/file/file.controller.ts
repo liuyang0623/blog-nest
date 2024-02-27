@@ -32,6 +32,24 @@ export class FileController {
   }
 
   /**
+   * 上传文件(又拍云)
+   * @param file
+   */
+  @ApiResponse({ status: 200, description: '上传文件', type: [File] })
+  @Post('upload2')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      limits: {
+        fieldSize: 50 * 1024 * 1024,
+      },
+    })
+  )
+  @UseGuards(JwtAuthGuard)
+  uploadFileUpyun(@UploadedFile() file) {
+    return this.fileService.uploadFileUpyun(file);
+  }
+
+  /**
    * 获取所有文件
    */
   @Get()
