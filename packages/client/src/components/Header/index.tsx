@@ -17,15 +17,23 @@ import style from './index.module.scss';
 const NAV_LINKS = [
   {
     path: '/',
+    target: '',
     locale: 'article',
   },
   {
     path: '/archives',
+    target: '',
     locale: 'archives',
   },
   {
     path: '/knowledge',
+    target: '',
     locale: 'knowledgeBooks',
+  },
+  {
+    path: 'https://gpt.liuyfe.com/',
+    target: '_blank',
+    locale: 'chatAi',
   },
 ];
 
@@ -73,7 +81,7 @@ export const Header = ({ setting, tags, pages, hasBg = false }) => {
   const navMenu = NAV_LINKS.map((nav) => (
     <li key={nav.path} className={cls({ [style.active]: asPath === nav.path })}>
       <Link href={nav.path}>
-        <a aria-label={nav.locale}>
+        <a aria-label={nav.locale} target={nav.target}>
           <span>{t(nav.locale)}</span>
         </a>
       </Link>
