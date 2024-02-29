@@ -23,7 +23,7 @@ export class UpyunSysClient extends UpyunClient {
     /* 计算policy */
     const policyObj = {
       'bucket': bucketname,
-      'save-key': `${!!path ? path : ''}/{filename}-${fileHash}{.suffix}`,
+      'save-key': `${!!path ? path : ''}{filename}-${fileHash}{.suffix}`,
       'expiration': new Date().getTime() + 3600 /* 过期时间，在当前时间+10分钟 */,
     };
     const policy = btoa(JSON.stringify(policyObj));

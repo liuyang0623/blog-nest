@@ -27,7 +27,7 @@ export class FileService {
    * 上传文件
    * @param file
    */
-  async uploadFile(file, unique): Promise<File> {
+  async uploadFileOss(file, unique): Promise<File> {
     const { originalname, mimetype, size, buffer } = file;
     const filename =
       +unique === 1
@@ -92,8 +92,12 @@ export class FileService {
    * 上传文件（又拍云）
    * @param file
    */
-  async uploadFileUpyun(file, path?) {
-    const { originalname, mimetype, size, buffer } = file;
+  async uploadFileUpyun(file, unique) {
+    const { originalname, mimetype, size } = file;
+    const path =
+      +unique === 1
+        ? `/${dateFormat(new Date(), 'yyyy-MM-dd')}/${uniqueid()}/`
+        : `/${dateFormat(new Date(), 'yyyy-MM-dd')}/`;
     const { url, filename } = await this.upyun.putFile({ file, path });
     const newFile = await this.fileRepository.create({
       originalname,
@@ -104,5 +108,18 @@ export class FileService {
     });
     await this.fileRepository.save(newFile);
     return newFile;
+  }
+
+  /**
+   * 上传文件不同方式选择
+   */
+  async uploadFile(file, unique) {
+    const data = await this.settingService.findAll(true);
+    const ossConfig = JSON.parse(data.oss);
+    if (ossConfig) {
+      return this.uploadFileOss(file, unique);
+    } else {
+      return this.uploadFileUpyun(file, unique);
+    }
   }
 }

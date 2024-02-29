@@ -6,7 +6,6 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Roles, RolesGuard } from '../auth/roles.guard';
 import { File } from './file.entity';
 import { FileService } from './file.service';
-
 @ApiTags('File')
 @Controller('file')
 @UseGuards(RolesGuard)
@@ -45,8 +44,8 @@ export class FileController {
     })
   )
   @UseGuards(JwtAuthGuard)
-  uploadFileUpyun(@UploadedFile() file) {
-    return this.fileService.uploadFileUpyun(file);
+  uploadFileUpyun(@UploadedFile() file, @Query('unique') unique) {
+    return this.fileService.uploadFileUpyun(file, unique);
   }
 
   /**
